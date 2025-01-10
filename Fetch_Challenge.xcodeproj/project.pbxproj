@@ -51,6 +51,9 @@
 		02A571C82D30D5E5009B92B9 /* Fetch_Challenge */ = {
 			isa = PBXGroup;
 			children = (
+				02A571D92D30D645009B92B9 /* Model */,
+				02A571D82D30D631009B92B9 /* ViewModel */,
+				02A571D72D30D621009B92B9 /* Views */,
 				02A571C92D30D5E5009B92B9 /* Fetch_ChallengeApp.swift */,
 				02A571CB2D30D5E5009B92B9 /* ContentView.swift */,
 				02A571CD2D30D5EA009B92B9 /* Assets.xcassets */,
@@ -65,6 +68,27 @@
 				02A571D02D30D5EA009B92B9 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		02A571D72D30D621009B92B9 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		02A571D82D30D631009B92B9 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		02A571D92D30D645009B92B9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

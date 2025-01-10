@@ -2,7 +2,7 @@
 //  ContentView.swift
 //  Fetch_Challenge
 //
-//  Created by Consultant on 1/9/25.
+//  Created by Froylan Almeida on 1/9/25.
 //
 
 import SwiftUI
