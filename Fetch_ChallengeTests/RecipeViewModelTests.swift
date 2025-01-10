@@ -11,28 +11,24 @@ import XCTest
 @testable import Fetch_Challenge
 
 class MockRecipeService: RecipeService {
-    var shouldReturnError = false
-    var mockRecipes: [Recipe] = []
+    var result: Result<[Recipe]?, Error> = .success(nil)
     
-    func fetchRecipes() -> AnyPublisher<[Recipe], Error> {
-        if shouldReturnError {
-            return Fail(error: NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "Mock error"]))
-                .eraseToAnyPublisher()
+    override func fetchRecipes() -> AnyPublisher<[Recipe]?, Error> {
+        return Future { promise in
+            promise(self.result)
         }
-        return Just(mockRecipes)
-            .setFailureType(to: Error.self)
-            .eraseToAnyPublisher()
+        .eraseToAnyPublisher()
     }
 }
 
 @MainActor
-class RecipeViewModelTests: XCTestCase {
+final class RecipeViewModelTests: XCTestCase {
     var viewModel: RecipeViewModel!
     var mockService: MockRecipeService!
     var cancellables: Set<AnyCancellable>!
     
-    override func setUp() async throws {
-        try await super.setUp()
+    override func setUp() {
+        super.setUp()
         mockService = MockRecipeService()
         viewModel = RecipeViewModel(service: mockService)
         cancellables = []
@@ -45,47 +41,67 @@ class RecipeViewModelTests: XCTestCase {
         super.tearDown()
     }
     
-    // Test carga exitosa de recetas
-    func testLoadRecipesSuccess() async {
-        // Given
-        let mockRecipes = [
-            Recipe(id: "3", name: "Ceviche", photoURLSmall: "http://image.com", photoURLLarge: "", cuisine: "Ec", youtubeURL: "")
+    func testLoadRecipesWithValidData() {
+        let jsonData = """
+        [
+            { "id": 1, "name": "Recipe 1" },
+            { "id": 2, "name": "Recipe 2" }
         ]
-        mockService.mockRecipes = mockRecipes
+        """.data(using: .utf8)!
         
-        // When
-        await viewModel.loadRecipes()
+        let recipes = try! JSONDecoder().decode([Recipe].self, from: jsonData)
+        mockService.result = .success(recipes)
         
-        // Then
-        XCTAssertEqual(viewModel.recipes.count, 0)
-//        XCTAssertEqual(viewModel.recipes, mockRecipes)
-        XCTAssertNil(viewModel.errorMessage)
+        let expectation = XCTestExpectation(description: "Load recipes successfully")
+        
+        viewModel.loadRecipes()
+
+        viewModel.$recipes
+            .dropFirst()
+            .sink { recipes in
+                XCTAssertEqual(recipes.count, 2)
+                XCTAssertEqual(recipes[0].name, "Recipe 1")
+                XCTAssertEqual(recipes[1].name, "Recipe 2")
+                expectation.fulfill()
+            }
+            .store(in: &cancellables)
+        
+        wait(for: [expectation], timeout: 1.0)
     }
     
-    // Test carga vacía de recetas
-    func testLoadRecipesEmpty() async {
-        // Given
-        mockService.mockRecipes = []
+    func testLoadRecipesWithEmptyData() {
+        mockService.result = .success([])
         
-        // When
-        await viewModel.loadRecipes()
+        let expectation = XCTestExpectation(description: "Handle empty recipes data")
         
-        // Then
-        XCTAssertTrue(viewModel.recipes.isEmpty)
-        XCTAssertNil(viewModel.errorMessage)
+        viewModel.loadRecipes()
+        
+        viewModel.$recipes
+            .dropFirst()
+            .sink { recipes in
+                XCTAssertTrue(recipes.isEmpty)
+                expectation.fulfill()
+            }
+            .store(in: &cancellables)
+        
+        wait(for: [expectation], timeout: 1.0)
     }
     
-    // Test error al cargar recetas
-    func testLoadRecipesError() async {
-        // Given
-        mockService.shouldReturnError = true
+    func testLoadRecipesWithMalformedData() {
+        mockService.result = .failure(URLError(.badServerResponse))
         
-        // When
-        await viewModel.loadRecipes()
+        let expectation = XCTestExpectation(description: "Handle malformed data")
         
-        // Then
-        XCTAssertTrue(viewModel.recipes.isEmpty)
-        XCTAssertNil(viewModel.errorMessage)
+        viewModel.loadRecipes()
+        
+        viewModel.$errorMessage
+            .dropFirst()
+            .sink { errorMessage in
+                XCTAssertNotNil(errorMessage)
+                expectation.fulfill()
+            }
+            .store(in: &cancellables)
+        
+        wait(for: [expectation], timeout: 1.0)
     }
 }
-
