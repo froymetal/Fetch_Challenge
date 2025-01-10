@@ -13,9 +13,21 @@
 		02A571DB2D317DCA009B92B9 /* RecipeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A571DA2D317DCA009B92B9 /* RecipeResponse.swift */; };
 		02A571DE2D317E27009B92B9 /* RecipeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A571DD2D317E27009B92B9 /* RecipeService.swift */; };
 		02A571E12D317E5F009B92B9 /* RecipeConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A571E02D317E5F009B92B9 /* RecipeConstants.swift */; };
-		02A571E32D317E9B009B92B9 /* RecipesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A571E22D317E9B009B92B9 /* RecipesViewModel.swift */; };
+		02A571E32D317E9B009B92B9 /* RecipeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A571E22D317E9B009B92B9 /* RecipeViewModel.swift */; };
 		02A571E52D317ECD009B92B9 /* RecipesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A571E42D317ECD009B92B9 /* RecipesView.swift */; };
+		02A571F62D319945009B92B9 /* RecipeServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A571F42D319945009B92B9 /* RecipeServiceTests.swift */; };
+		02A571F82D319999009B92B9 /* RecipeViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A571F72D319999009B92B9 /* RecipeViewModelTests.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		02A571EE2D319799009B92B9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 02A571BE2D30D5E5009B92B9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 02A571C52D30D5E5009B92B9;
+			remoteInfo = Fetch_Challenge;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		02A571C62D30D5E5009B92B9 /* Fetch_Challenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fetch_Challenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -25,12 +37,22 @@
 		02A571DA2D317DCA009B92B9 /* RecipeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeResponse.swift; sourceTree = "<group>"; };
 		02A571DD2D317E27009B92B9 /* RecipeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeService.swift; sourceTree = "<group>"; };
 		02A571E02D317E5F009B92B9 /* RecipeConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeConstants.swift; sourceTree = "<group>"; };
-		02A571E22D317E9B009B92B9 /* RecipesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesViewModel.swift; sourceTree = "<group>"; };
+		02A571E22D317E9B009B92B9 /* RecipeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeViewModel.swift; sourceTree = "<group>"; };
 		02A571E42D317ECD009B92B9 /* RecipesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesView.swift; sourceTree = "<group>"; };
+		02A571EA2D319798009B92B9 /* Fetch_ChallengeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Fetch_ChallengeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		02A571F42D319945009B92B9 /* RecipeServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeServiceTests.swift; sourceTree = "<group>"; };
+		02A571F72D319999009B92B9 /* RecipeViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeViewModelTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		02A571C32D30D5E5009B92B9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		02A571E72D319798009B92B9 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -44,6 +66,7 @@
 			isa = PBXGroup;
 			children = (
 				02A571C82D30D5E5009B92B9 /* Fetch_Challenge */,
+				02A571EB2D319798009B92B9 /* Fetch_ChallengeTests */,
 				02A571C72D30D5E5009B92B9 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -52,6 +75,7 @@
 			isa = PBXGroup;
 			children = (
 				02A571C62D30D5E5009B92B9 /* Fetch_Challenge.app */,
+				02A571EA2D319798009B92B9 /* Fetch_ChallengeTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -90,7 +114,7 @@
 		02A571D82D30D631009B92B9 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				02A571E22D317E9B009B92B9 /* RecipesViewModel.swift */,
+				02A571E22D317E9B009B92B9 /* RecipeViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -119,6 +143,15 @@
 			path = Constants;
 			sourceTree = "<group>";
 		};
+		02A571EB2D319798009B92B9 /* Fetch_ChallengeTests */ = {
+			isa = PBXGroup;
+			children = (
+				02A571F42D319945009B92B9 /* RecipeServiceTests.swift */,
+				02A571F72D319999009B92B9 /* RecipeViewModelTests.swift */,
+			);
+			path = Fetch_ChallengeTests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -139,6 +172,24 @@
 			productReference = 02A571C62D30D5E5009B92B9 /* Fetch_Challenge.app */;
 			productType = "com.apple.product-type.application";
 		};
+		02A571E92D319798009B92B9 /* Fetch_ChallengeTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 02A571F02D319799009B92B9 /* Build configuration list for PBXNativeTarget "Fetch_ChallengeTests" */;
+			buildPhases = (
+				02A571E62D319798009B92B9 /* Sources */,
+				02A571E72D319798009B92B9 /* Frameworks */,
+				02A571E82D319798009B92B9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				02A571EF2D319799009B92B9 /* PBXTargetDependency */,
+			);
+			name = Fetch_ChallengeTests;
+			productName = Fetch_ChallengeTests;
+			productReference = 02A571EA2D319798009B92B9 /* Fetch_ChallengeTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -151,6 +202,10 @@
 				TargetAttributes = {
 					02A571C52D30D5E5009B92B9 = {
 						CreatedOnToolsVersion = 15.2;
+					};
+					02A571E92D319798009B92B9 = {
+						CreatedOnToolsVersion = 15.2;
+						TestTargetID = 02A571C52D30D5E5009B92B9;
 					};
 				};
 			};
@@ -168,6 +223,7 @@
 			projectRoot = "";
 			targets = (
 				02A571C52D30D5E5009B92B9 /* Fetch_Challenge */,
+				02A571E92D319798009B92B9 /* Fetch_ChallengeTests */,
 			);
 		};
 /* End PBXProject section */
@@ -182,6 +238,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		02A571E82D319798009B92B9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -189,7 +252,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				02A571E32D317E9B009B92B9 /* RecipesViewModel.swift in Sources */,
+				02A571E32D317E9B009B92B9 /* RecipeViewModel.swift in Sources */,
 				02A571E12D317E5F009B92B9 /* RecipeConstants.swift in Sources */,
 				02A571DB2D317DCA009B92B9 /* RecipeResponse.swift in Sources */,
 				02A571CA2D30D5E5009B92B9 /* Fetch_ChallengeApp.swift in Sources */,
@@ -198,7 +261,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		02A571E62D319798009B92B9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				02A571F82D319999009B92B9 /* RecipeViewModelTests.swift in Sources */,
+				02A571F62D319945009B92B9 /* RecipeServiceTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		02A571EF2D319799009B92B9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 02A571C52D30D5E5009B92B9 /* Fetch_Challenge */;
+			targetProxy = 02A571EE2D319799009B92B9 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		02A571D22D30D5EA009B92B9 /* Debug */ = {
@@ -380,6 +460,42 @@
 			};
 			name = Release;
 		};
+		02A571F12D319799009B92B9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = TFGQTYMVM3;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.froy.Fetch-ChallengeTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Fetch_Challenge.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Fetch_Challenge";
+			};
+			name = Debug;
+		};
+		02A571F22D319799009B92B9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = TFGQTYMVM3;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.froy.Fetch-ChallengeTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Fetch_Challenge.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Fetch_Challenge";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -397,6 +513,15 @@
 			buildConfigurations = (
 				02A571D52D30D5EA009B92B9 /* Debug */,
 				02A571D62D30D5EA009B92B9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		02A571F02D319799009B92B9 /* Build configuration list for PBXNativeTarget "Fetch_ChallengeTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				02A571F12D319799009B92B9 /* Debug */,
+				02A571F22D319799009B92B9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

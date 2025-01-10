@@ -8,5 +8,7 @@
 import Foundation
 
 struct RecipeConstants {
-    static let apiURL = "https://d3jbb8n5wk0qxi.cloudfront.net/recipes.json"
+    static var apiURL = "https://d3jbb8n5wk0qxi.cloudfront.net/recipes.json"
+    static var malformedDataURL = "https://d3jbb8n5wk0qxi.cloudfront.net/recipes-malformed.json"
+    static var emptyDataURL = "https://d3jbb8n5wk0qxi.cloudfront.net/recipes-empty.json"
 }

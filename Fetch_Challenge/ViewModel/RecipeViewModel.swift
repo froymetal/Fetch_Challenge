@@ -12,10 +12,14 @@ import Combine
 class RecipeViewModel: ObservableObject {
     @Published var recipes: [Recipe] = []
     @Published var errorMessage: String?
-
-    private let service = RecipeService()
+    
+    private let service: RecipeService
     private var cancellables = Set<AnyCancellable>()
-
+    
+    init(service: RecipeService = RecipeService()) {
+        self.service = service
+    }
+    
     func loadRecipes() {
         service.fetchRecipes()
             .receive(on: DispatchQueue.main)
@@ -32,3 +36,4 @@ class RecipeViewModel: ObservableObject {
             .store(in: &cancellables)
     }
 }
+
