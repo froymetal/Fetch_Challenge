@@ -8,21 +8,23 @@
 import Foundation
 import Combine
 
+@MainActor
 class RecipeViewModel: ObservableObject {
     @Published var recipes: [Recipe] = []
     @Published var errorMessage: String?
 
-    private var cancellables = Set<AnyCancellable>()
     private let service = RecipeService()
+    private var cancellables = Set<AnyCancellable>()
 
     func loadRecipes() {
         service.fetchRecipes()
+            .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { [weak self] completion in
                 switch completion {
                 case .failure(let error):
                     self?.errorMessage = error.localizedDescription
                 case .finished:
-                    break
+                    self?.errorMessage = nil
                 }
             }, receiveValue: { [weak self] recipes in
                 self?.recipes = recipes ?? []

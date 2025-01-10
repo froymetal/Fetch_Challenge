@@ -12,7 +12,17 @@ struct RecipeListView: View {
 
     var body: some View {
         NavigationView {
-            Group {
+            VStack {
+                HStack {
+                    Spacer()
+                    Button("Refresh Information") {
+                        viewModel.loadRecipes()
+                    }
+                    .padding()
+                    .foregroundColor(.blue)
+                    .cornerRadius(8)
+                }
+
                 if let errorMessage = viewModel.errorMessage {
                     Text("Error: \(errorMessage)")
                         .foregroundColor(.red)

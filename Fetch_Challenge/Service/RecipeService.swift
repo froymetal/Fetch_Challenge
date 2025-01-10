@@ -16,14 +16,13 @@ class RecipeService {
 
         return URLSession.shared.dataTaskPublisher(for: url)
             .tryMap { output -> Data in
-                guard let response = output.response as? HTTPURLResponse, response.statusCode == 200 else {
+                guard let httpResponse = output.response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
                     throw URLError(.badServerResponse)
                 }
                 return output.data
             }
             .decode(type: RecipeResponse.self, decoder: JSONDecoder())
             .map { $0.recipes }
-            .receive(on: DispatchQueue.main)
             .eraseToAnyPublisher()
     }
 }
